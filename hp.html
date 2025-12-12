@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📱 Toko HP Online Terpercaya</title>
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- ===================== CSS DIGABUNGKAN ===================== -->
+    <style>
+        /* RESET DASAR */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+            color: #333;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .nav-links li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+            transition: background-color 0.3s;
+        }
+
+        .nav-links li a:hover {
+            background-color: #0056b3;
+        }
+
+        .nav-icon i {
+            font-size: 1.4em;
+            cursor: pointer;
+        }
+
+        /* HEADER */
+        header {
+            background-color: #ffffff;
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 5px solid #ffc107;
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            color: #007bff;
+            margin-bottom: 5px;
+        }
+
+        /* MAIN CONTENT */
+        main {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        #daftar-hp { flex: 3; }
+
+        #ringkasan-pesanan {
+            flex: 1;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            height: fit-content;
+        }
+
+        /* PRODUCT CARD */
+        .product-card {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .product-card figure {
+            flex: 0 0 300px;
+            margin: 0;
+            margin-right: 20px;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .harga {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #dc3545;
+            margin: 10px 0;
+        }
+
+        /* RINGKASAN */
+        .total-area {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-top: 1px solid #eee;
+        }
+
+        .grand-total {
+            border-top: 2px solid #333;
+            margin-top: 10px;
+        }
+
+        #btn-pesan {
+            width: 100%;
+            padding: 12px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+        }
+
+        #btn-pesan:hover { background-color: #1e7e34; }
+
+        .konfirmasi-box {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #e9f7ef;
+            border: 1px solid #28a745;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .hidden { display: none !important; }
+
+        .btn-cetak, .btn-baru {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .btn-cetak { background-color: #007bff; color: white; }
+        .btn-baru { background-color: #6c757d; color: white; }
+
+        /* FULL WIDTH SECTION */
+        .full-width-section {
+            flex: 0 0 100%;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        /* PRINT */
+        @media print {
+            body * { visibility: hidden; }
+            #konfirmasi-pembayaran, #konfirmasi-pembayaran * { visibility: visible; }
+            #konfirmasi-pembayaran {
+                position: absolute;
+                top: 0; left: 0;
+                width: 100%;
+                background: white;
+            }
+            .btn-cetak, .btn-baru { display: none; }
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            margin-top: 30px;
+            background-color: #333;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ======================= HTML TETAP SAMA ======================= -->
+<nav class="navbar">
+    <div class="logo">Zall Cellular</div>
+    <ul class="nav-links">
+        <li><a href="#daftar-hp">Pilihan HP</a></li>
+        <li><a href="#ringkasan-pesanan">Keranjang</a></li>
+        <li><a href="#tentang-kami">Tentang Kami</a></li>
+        <li><a href="#hubungi-kami">Hubungi Kami</a></li>
+    </ul>
+    <div class="nav-icon"><i class="fa-solid fa-cart-shopping"></i></div>
+</nav>
+
+<header>
+    <h1>📱 Beli HP Terbaru, Harga Terbaik!</h1>
+    <p>Lihat berbagai pilihan Smartphone terbaik dengan garansi resmi.</p>
+</header>
+
+<main>
+
+    <!-- PRODUK -->
+<section id="daftar-hp">
+    <h2>Pilih Smartphone Terbaik</h2>
+
+    <div class="product-card" data-nama="Samsung Galaxy S24 Ultra" data-harga="14999000">
+        <figure><img src="data:image/jpeg;base64,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" /></figure>
+        <div class="card-content">
+            <h3>Samsung Galaxy S24 Ultra</h3>
+            <p class="harga">Rp 14.999.000</p>
+            <div class="qty-control">
+                <label for="qty-1">Jumlah:</label>
+                <input type="number" id="qty-1" value="0" min="0" onchange="hitungTotal()">
+            </div>
+        </div>
+    </div>
+
+    <div class="product-card" data-nama="Oppo Reno 14 5G" data-harga="11000000">
+        <figure><img src="https://cdnpro.eraspace.com/media/catalog/product/o/p/oppo_reno14_5g_white_01_2_1.jpg" /></figure>
+        <div class="card-content">
+            <h3>Oppo Reno 14 5G</h3>
+            <p class="harga">Rp 11.000.000</p>
+            <div class="qty-control">
+                <label for="qty-2">Jumlah:</label>
+                <input type="number" id="qty-2" value="0" min="0" onchange="hitungTotal()">
+            </div>
+        </div>
+    </div>
+
+    <div class="product-card" data-nama="Xiaomi 14 Ultra" data-harga="12999000">
+        <figure><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxMnSVE0y5QEctjLX87Kmbi4YhmRBT9nJ3cg&s" /></figure>
+        <div class="card-content">
+            <h3>Xiaomi 14 Ultra</h3>
+            <p class="harga">Rp 12.999.000</p>
+            <div class="qty-control">
+                <label for="qty-3">Jumlah:</label>
+                <input type="number" id="qty-3" value="0" min="0" onchange="hitungTotal()">
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- RINGKASAN PESANAN -->
+    <section id="ringkasan-pesanan">
+        <h2>Ringkasan Keranjang Anda</h2>
+        <div id="detail-pesanan"><p>Belum ada item yang dipesan.</p></div>
+
+        <div class="payment-selection">
+            <label>Pilih Pembayaran:</label>
+            <select id="metode-bayar" onchange="updatePaymentMethod()">
+                <option value="Transfer Bank">Transfer Bank</option>
+                <option value="Kartu Kredit">Kartu Kredit / Debit</option>
+                <option value="E-Wallet">E-Wallet (Dana/Gopay)</option>
+                <option value="Bayar di Tempat">COD</option>
+            </select>
+        </div>
+
+        <div class="payment-selection">
+            <label>Pilih Alamat Pengiriman:</label>
+            <select id="alamat-kirim" onchange="updateAlamat()">
+                <option value="Palembang">Palembang</option>
+                <option value="Prabumulih">Prabumulih</option>
+                <option value="Muara Enim">Muara Enim</option>
+                <option value="Tanjung Enim">Tanjung Enim</option>
+            </select>
+        </div>
+
+        <div class="total-area"><p>Alamat:</p><p id="alamat-terpilih">Palembang</p></div>
+        <div class="total-area"><p>Metode:</p><p id="metode-terpilih">Transfer Bank</p></div>
+        <div class="total-area"><p>Subtotal:</p><p id="subtotal">Rp 0</p></div>
+        <div class="total-area"><p>Biaya Kirim:</p><p id="biaya-kirim">Rp 30.000</p></div>
+
+        <div class="total-area grand-total">
+            <p><strong>TOTAL AKHIR:</strong></p>
+            <p id="total-akhir"><strong>Rp 30.000</strong></p>
+        </div>
+
+        <button id="btn-pesan" onclick="processPemesanan()">Lanjut ke Pembayaran</button>
+
+        <div id="konfirmasi-pembayaran" class="konfirmasi-box hidden">
+            <h3>✅ Pembayaran Berhasil!</h3>
+            <p>Terima kasih! Pesanan Anda telah dikonfirmasi.</p>
+            <div id="struk-content"></div>
+
+            <button class="btn-cetak" onclick="cetakStruk()"><i class="fa-solid fa-print"></i> Cetak Struk</button>
+            <button class="btn-baru" onclick="resetApp()">Pesanan Baru</button>
+        </div>
+    </section>
+
+    <!-- TENTANG KAMI -->
+    <section id="tentang-kami" class="full-width-section">
+        <h2>Tentang Zall Cellular 🌟</h2>
+        <p>Didirikan pada tahun 2026...</p>
+    </section>
+
+    <!-- HUBUNGI -->
+    <section id="hubungi-kami" class="full-width-section">
+        <h2>Hubungi Kami 📞</h2>
+
+        <form id="contact-form" class="contact-form">
+            <h4>Kirim Pesan Cepat</h4>
+            <input type="text" id="contact-name" placeholder="Nama Anda" required>
+            <input type="email" id="contact-email" placeholder="Email Anda" required>
+            <textarea id="contact-message" required></textarea>
+            <button type="submit" class="btn-kirim">Kirim</button>
+        </form>
+
+        <div id="contact-notification" class="konfirmasi-box hidden">
+            <h3><i class="fa-solid fa-check-circle"></i> Pesan Terkirim</h3>
+            <p>Pesan Anda telah diterima oleh Admin.</p>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <p>&copy; 2025 Zall Cellular</p>
+</footer>
+
+<!-- =================== JAVASCRIPT DIGABUNGKAN =================== -->
+<script>
+
+const BIAYA_KIRIM_DEFAULT = 10000;
+const BIAYA_KIRIM_DAERAH = 20000;
+
+function formatRupiah(angka) {
+    if (isNaN(angka)) return 'Rp 0';
+    return 'Rp ' + parseInt(angka).toLocaleString('id-ID');
+}
+
+function getShippingCost() {
+    const addr = document.getElementById('alamat-kirim').value;
+    return addr === 'Palembang' ? BIAYA_KIRIM_DEFAULT : BIAYA_KIRIM_DAERAH;
+}
+
+function hitungTotal() {
+    const cards = document.querySelectorAll('.product-card');
+    let subtotal = 0;
+    let detailHTML = '<ul>';
+
+    const biayaKirim = getShippingCost();
+    document.getElementById('biaya-kirim').textContent = formatRupiah(biayaKirim);
+
+    cards.forEach((card, idx) => {
+        const nama = card.dataset.nama;
+        const harga = parseInt(card.dataset.harga);
+        const qty = parseInt(document.getElementById(`qty-${idx+1}`).value) || 0;
+
+        if (qty > 0) {
+            const total = qty * harga;
+            subtotal += total;
+
+            detailHTML += `
+                <li>
+                    <span>${nama} (${qty}x)</span>
+                    <span>${formatRupiah(total)}</span>
+                </li>
+            `;
+        }
+    });
+
+    detailHTML += '</ul>';
+
+    if (subtotal === 0) {
+        document.getElementById('detail-pesanan').innerHTML = '<p>Belum ada item di keranjang.</p>';
+        document.getElementById('subtotal').textContent = formatRupiah(0);
+        document.getElementById('total-akhir').textContent = formatRupiah(biayaKirim);
+        return;
+    }
+
+    document.getElementById('detail-pesanan').innerHTML = detailHTML;
+    document.getElementById('subtotal').textContent = formatRupiah(subtotal);
+    document.getElementById('total-akhir').textContent = formatRupiah(subtotal + biayaKirim);
+}
+
+function updatePaymentMethod() {
+    document.getElementById('metode-terpilih').textContent =
+        document.getElementById('metode-bayar').value;
+}
+
+function updateAlamat() {
+    document.getElementById('alamat-terpilih').textContent =
+        document.getElementById('alamat-kirim').value;
+    hitungTotal();
+}
+
+function processPemesanan() {
+    const subtotal = parseInt(
+        document.getElementById('subtotal').textContent.replace(/\D/g, '')
+    );
+
+    if (subtotal === 0) {
+        alert("Keranjang kosong.");
+        return;
+    }
+
+    document.querySelectorAll('.qty-control input').forEach(i => i.disabled = true);
+
+    document.getElementById('btn-pesan').classList.add('hidden');
+    document.getElementById('konfirmasi-pembayaran').classList.remove('hidden');
+
+    displayStruk();
+}
+
+function displayStruk() {
+    const metode = document.getElementById('metode-terpilih').textContent;
+    const alamat = document.getElementById('alamat-terpilih').textContent;
+    const biaya = getShippingCost();
+    const totalAkhir = document.getElementById('total-akhir').textContent;
+
+    const detail = document.getElementById('detail-pesanan').innerHTML;
+
+    document.getElementById('struk-content').innerHTML = `
+        <div class="struk-detail">
+            <p><strong>ID Transaksi:</strong> ${Date.now().toString().slice(-6)}</p>
+            <p><strong>Tanggal:</strong> ${new Date().toLocaleDateString('id-ID')}</p>
+            <p><strong>Alamat:</strong> ${alamat}</p>
+            <p><strong>Metode Pembayaran:</strong> ${metode}</p>
+            <hr>
+            <h4>Detail Pesanan:</h4>
+            ${detail}
+            <div style="display:flex; justify-content:space-between;">
+                <span>Biaya Pengiriman</span>
+                <span>${formatRupiah(biaya)}</span>
+            </div>
+            <hr>
+            <div style="display:flex; justify-content:space-between; font-weight:bold;">
+                <span>TOTAL DIBAYAR</span>
+                <span>${totalAkhir}</span>
+            </div>
+        </div>
+    `;
+}
+
+function cetakStruk() {
+    window.print();
+}
+
+function resetApp() {
+    document.querySelectorAll('.qty-control input').forEach(i => {
+        i.value = 0;
+        i.disabled = false;
+    });
+
+    document.getElementById('metode-bayar').value = "Transfer Bank";
+    updatePaymentMethod();
+
+    document.getElementById('alamat-kirim').value = "Palembang";
+    updateAlamat();
+
+    document.getElementById('konfirmasi-pembayaran').classList.add('hidden');
+    document.getElementById('btn-pesan').classList.remove('hidden');
+
+    hitungTotal();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    updatePaymentMethod();
+    updateAlamat();
+
+    document.getElementById('contact-form').addEventListener('submit', e => {
+        e.preventDefault();
+        document.getElementById('contact-form').classList.add('hidden');
+        document.getElementById('contact-notification').classList.remove('hidden');
+    });
+});
+</script>
+
+</body>
+</html>
